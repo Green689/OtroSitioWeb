@@ -1,0 +1,74 @@
+@mixin container($anchoMaximo, $ancho, $columns) {
+    width: $ancho;
+    max-width: $anchoMaximo;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    $fr: 1fr;
+    @while $columns != 0{
+        $fr: $fr + #{" 1fr"};
+        $columns: $columns - 1;
+    }
+    grid-template-columns: $fr;
+    grid-gap: 1rem;
+}
+
+@mixin blanco {
+    background: #fff;
+}
+
+.container > div{
+    display: block;
+    padding: 10px;
+    @include blanco;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.25);
+}
+
+div > img{
+  width: 100%;
+  height: auto;
+}
+
+@supports(object-fit: cover){
+    div > img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+
+@function colorHeader($color1, $color2){
+    @return mix($color1, $color2, 50%);
+}
+
+@mixin header1($color11, $color12){
+    color: colorHeader($color11, $color12);
+    font-size: 50px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container{
+    @include container(300px, 100%, 0);
+}
+.header {
+  @include header1(lightblue, red)   
+}
+
+@media only screen and (min-width: 768px) {
+    .container{
+        @include container(800px, 95%, 2);
+    }
+    .header {
+        @include header1(pink, yellow)
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container{
+        @include container(1500px, 90%, 5)
+    }
+    .header {
+        @include header1(gray, lightgreen)
+    }
+}
