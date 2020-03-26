@@ -41,9 +41,9 @@ div > img{
     @return mix($color1, $color2, 50%);
 }
 
-@mixin header1($color11, $color12){
+@mixin header1($color11, $color12, $fontsize){
     color: colorHeader($color11, $color12);
-    font-size: 50px;
+    font-size: $fontsize;
     text-align: center;
     padding: 20px 0;
 }
@@ -52,7 +52,7 @@ div > img{
     @include container(300px, 100%, 0);
 }
 .header {
-  @include header1(lightblue, red)   
+  @include header1(lightblue, red, 40px)   
 }
 
 @media only screen and (min-width: 768px) {
@@ -60,7 +60,7 @@ div > img{
         @include container(800px, 95%, 2);
     }
     .header {
-        @include header1(pink, yellow)
+        @include header1(pink, yellow, 50px)
     }
 }
 
@@ -69,6 +69,6 @@ div > img{
         @include container(1500px, 90%, 5)
     }
     .header {
-        @include header1(gray, lightgreen)
+        @include header1(gray, lightgreen, 50px)
     }
 }
