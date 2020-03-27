@@ -9,6 +9,8 @@
 div > img {
   width: 100%;
   height: auto;
+  animation-name: tamanio;
+  animation-duration: 5s;
 }
 
 @supports (object-fit: cover) {
@@ -18,23 +20,28 @@ div > img {
     object-position: center center;
   }
 }
-.container {
-  width: 100%;
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
+@keyframes tamanio {
+  0% {
+    height: 0%;
+    width: 0%;
+  }
+  25% {
+    height: 30%;
+    width: 30%;
+  }
+  50% {
+    height: 50%;
+    width: 50%;
+  }
+  75% {
+    height: 70%;
+    width: 70%;
+  }
+  100% {
+    height: auto;
+    width: 100%;
+  }
 }
-
-.header {
-  color: #d66c73;
-  font-size: 40px;
-  text-align: center;
-  padding: 20px 0;
-}
-
 .container > div.div1:hover {
   background: #e8eef0;
   box-shadow: 4px 4px 20px lightblue;
@@ -53,6 +60,71 @@ div > img {
   border-radius: 10px;
 }
 
+.container {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.header {
+  color: #d66c73;
+  font-size: 40px;
+  text-align: center;
+  padding: 20px 0;
+  animation-name: tamanioTitulo;
+  animation-duration: 5s;
+}
+
+span.header > p.titulo:hover {
+  animation-name: colorTitulo;
+  animation-duration: 5s;
+}
+
+span.header > p.titulo:active {
+  animation-name: Titulo;
+  animation-duration: 5s;
+}
+
+@keyframes Titulo {
+  0% {
+    background-color: black;
+    color: white;
+  }
+  50% {
+    background-color: green;
+    color: lightgreen;
+  }
+  100% {
+    background-color: pink;
+    color: lightpink;
+  }
+}
+@keyframes colorTitulo {
+  0% {
+    color: lightgreen;
+  }
+  50% {
+    color: lightblue;
+  }
+  100% {
+    color: lightpink;
+  }
+}
+@keyframes tamanioTitulo {
+  0% {
+    font-size: 20px;
+  }
+  50% {
+    font-size: 60px;
+  }
+  100% {
+    font-size: 40px;
+  }
+}
 .boton {
   background-color: #4caf81;
   border: none;
@@ -60,11 +132,30 @@ div > img {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: none;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   transition: all 1s;
+}
+
+.boton:active {
+  animation-name: boton;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes boton {
+  0% {
+    background-color: lightblue;
+  }
+  100% {
+    background-color: lightblue;
+    border-radius: 50px;
+  }
+}
+div:hover > .boton {
+  display: inline;
 }
 
 .boton:hover {
