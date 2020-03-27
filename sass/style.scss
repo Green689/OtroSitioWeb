@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @mixin container($anchoMaximo, $ancho, $columns) {
     width: $ancho;
     max-width: $anchoMaximo;
@@ -22,6 +24,7 @@
     padding: 10px;
     @include blanco;
     box-shadow: 2px 2px 10px rgba(0,0,0,.25);
+    transition: all .5s;
 }
 
 div > img{
@@ -31,7 +34,7 @@ div > img{
 
 @supports(object-fit: cover){
     div > img{
-      height: 100%;
+      height: auto;
       object-fit: cover;
       object-position: center center;
     }
@@ -48,11 +51,48 @@ div > img{
     padding: 20px 0;
 }
 
+@mixin divhover($color){
+        background: color.mix(rgb(241, 241, 241), $color, 87%);
+        box-shadow: 4px 4px 20px $color;
+        border-radius: 10px; 
+}
+
 .container{
     @include container(300px, 100%, 0);
 }
 .header {
   @include header1(lightblue, red, 40px)   
+}
+
+.container > div.div1:hover {
+    @include divhover(lightblue)
+}
+
+.container > div.div2:hover {
+    @include divhover(lightgreen)
+}
+
+.container > div.div3:hover {
+    @include divhover(lightpink)
+}
+
+.boton {
+    background-color: rgb(76, 175, 129);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.boton:hover {
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px lightseagreen;
 }
 
 @media only screen and (min-width: 768px) {
